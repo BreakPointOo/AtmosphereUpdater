@@ -119,7 +119,7 @@ class Ui_Dialog(QDialog):
 
 	@pyqtSlot()
 	def comboBoxRefresh(self):
-		if os.path.exists(self.comboBox.currentText()+'\\atmosphere\\') == True and os.path.exists(self.comboBox.currentText()+'\\emummc\\') == True:
+		if os.path.exists(self.comboBox.currentText()+'\\atmosphere\\') == True and os.path.exists(self.comboBox.currentText()+'\\sept\\') == True:
 			self.textBrowser.append('TF卡盘符更改为 '+self.comboBox.currentText())
 			self.Button.setEnabled(True)
 		else:
