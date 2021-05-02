@@ -37,15 +37,17 @@ class Ui_Dialog(QDialog):
 				#else:
 				#	print(path1)
 
-	def DeleteFiles(self,path,remainDirsList):
+	def DeleteFiles(self,path,remainDirsList,fileList):
 		dirsList = []
 		dirsList = os.listdir(path)
 		for file in dirsList:	
 			if file not in remainDirsList:
 				filepath = os.path.join(path,file)
 				if os.path.isdir(filepath):
+					#print(filepath)
 					shutil.rmtree(filepath, True)			
-				else:
+				elif file not in fileList:
+					#print(filepath)
 					os.remove(filepath)
 
 	def getDirectory(self):
@@ -61,7 +63,7 @@ class Ui_Dialog(QDialog):
 			self.textBrowser.append('升级包目录不匹配，请重新选择目录')
 	def installNew(self):
 
-		filelist=[]
+		
 		path_bak =os.path.abspath(self.comboBox.currentText() + '\\AU_Bak\\')
 		if not os.path.exists(path_bak):
 			os.makedirs(path_bak)
@@ -84,7 +86,8 @@ class Ui_Dialog(QDialog):
 			shutil.copytree(path, path_bak+'\\Checkpoint\\saves')
 		path = self.comboBox.currentText()+'\\'
 		dirsList=['Nintendo','emuMMC','AU_Bak']
-		self.DeleteFiles(path,dirsList)
+		fileList=['license.dat']
+		self.DeleteFiles(path,dirsList,fileList)
 
 
 		global upd_path
