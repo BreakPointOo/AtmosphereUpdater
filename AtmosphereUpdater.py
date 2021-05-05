@@ -85,7 +85,7 @@ class Ui_Dialog(QDialog):
 		if os.path.exists(path):		
 			shutil.copytree(path, path_bak+'\\Checkpoint\\saves')
 		path = self.comboBox.currentText()+'\\'
-		dirsList=['Nintendo','emuMMC','AU_Bak']
+		dirsList=['Nintendo','emuMMC','AU_Bak','JKSV']
 		fileList=['license.dat']
 		self.DeleteFiles(path,dirsList,fileList)
 
